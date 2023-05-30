@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dataManager", "dataManager\dataManager.csproj", "{9DBDAD56-A15C-4BA6-A2BC-9E22D14F68B5}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Data", "Data\Data.sqlproj", "{B150D319-3BC6-4E30-9B27-DF5E5045B61E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,12 @@ Global
 		{9DBDAD56-A15C-4BA6-A2BC-9E22D14F68B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DBDAD56-A15C-4BA6-A2BC-9E22D14F68B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DBDAD56-A15C-4BA6-A2BC-9E22D14F68B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B150D319-3BC6-4E30-9B27-DF5E5045B61E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B150D319-3BC6-4E30-9B27-DF5E5045B61E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B150D319-3BC6-4E30-9B27-DF5E5045B61E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B150D319-3BC6-4E30-9B27-DF5E5045B61E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B150D319-3BC6-4E30-9B27-DF5E5045B61E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B150D319-3BC6-4E30-9B27-DF5E5045B61E}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
