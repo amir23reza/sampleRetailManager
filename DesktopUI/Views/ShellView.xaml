@@ -8,8 +8,14 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ShellView">
 
-    <Grid>
-        <Button Content="Test Button" HorizontalAlignment="Left" Margin="221,212,0,0" VerticalAlignment="Top" Height="102" Width="245" Click="Button_Click"/>
-
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Account">
+                <MenuItem Header="_Login" />
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <ContentControl x:Name="ActiveItem"/>
+        </Grid>
+    </DockPanel>
 </Page>

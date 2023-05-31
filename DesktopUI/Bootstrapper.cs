@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using DesktopUI.Helpers;
 using DesktopUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,8 @@ namespace DesktopUI
              */
 
             container_.Singleton<IWindowManager, WindowManager>()
-                .Singleton<IEventAggregator, EventAggregator>();
+                .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<IAPIHelper, APIHelper>();
 
             /**
              * The block of code below is firstly filtering all the classes that their names end with ViewModel, so basically all out view models.
