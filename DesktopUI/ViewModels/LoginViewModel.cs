@@ -23,6 +23,24 @@ namespace DesktopUI.ViewModels
         public string UserName { get { return _username; } set { _username = value; NotifyOfPropertyChange(() => UserName); NotifyOfPropertyChange(() => CanLogIn); } }
         public string Password { get { return _password; } set { _password = value; NotifyOfPropertyChange(() => Password); NotifyOfPropertyChange(() => CanLogIn); } }
 
+        private bool _isErrorVisible;
+
+        public bool IsErrorVisible
+        {
+            get { return ErrorMessage?.Length > 0; }
+            set { _isErrorVisible = value; }
+        }
+
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set { _errorMessage = value; NotifyOfPropertyChange(() => ErrorMessage); NotifyOfPropertyChange(() => IsErrorVisible); }
+        }
+
+
+
         /**
          * Works as a control which can enable and disable the button, it only works if we define the LogIn() function for the button as well.
          */
@@ -39,14 +57,15 @@ namespace DesktopUI.ViewModels
             }
         }
 
-        public void LogIn()
+        public async Task LogIn()
         {
             try
             {
-                var res = _APIHelper.Authenticate(UserName, Password);
+                ErrorMessage = "";
+                var res = await _APIHelper.Authenticate(UserName, Password);
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                ErrorMessage = ex.Message == "OK" ? "" : ex.Message;
             }
         }
     }
