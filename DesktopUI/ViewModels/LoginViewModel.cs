@@ -63,6 +63,8 @@ namespace DesktopUI.ViewModels
             {
                 ErrorMessage = "";
                 var res = await _APIHelper.Authenticate(UserName, Password);
+                // getting user information below from the returned 
+                await _APIHelper.GetUserInfo(res.Access_Token);
             } catch (Exception ex)
             {
                 ErrorMessage = ex.Message == "OK" ? "" : ex.Message;

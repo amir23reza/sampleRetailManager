@@ -13,10 +13,12 @@ namespace DesktopUI.Helpers
     public class APIHelper : IAPIHelper
     {
         private HttpClient APIClient;
+        private ILoggedInUser loggedInUser_;
 
-        public APIHelper()
+        public APIHelper(ILoggedInUser loggedInUser_)
         {
             initializeClient();
+            this.loggedInUser_ = loggedInUser_;
         }
 
         private void initializeClient()
@@ -50,6 +52,32 @@ namespace DesktopUI.Helpers
                 {
                     var res = await response.Content.ReadAsAsync<AuthenticatedUser>();
                     return res;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+
+        public async Task GetUserInfo(string token)
+        {
+            // firstly, we are clearing all the header values and set our own values again, which are simple "application/json" and the authorization token.
+            APIClient.DefaultRequestHeaders.Clear();
+            APIClient.DefaultRequestHeaders.Accept.Clear();
+            APIClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            APIClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+            // secondly, we would make the api call, fetch the data, map the data, and use it for future api calls
+            using (HttpResponseMessage response = await APIClient.GetAsync("/api/User"))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsAsync<ILoggedInUser>();
+                    loggedInUser_.Email = result.Email;
+                    loggedInUser_.FirstName = result.FirstName;
+                    loggedInUser_.LastName = result.LastName;
+                    loggedInUser_.token = token;
                 }
                 else
                 {

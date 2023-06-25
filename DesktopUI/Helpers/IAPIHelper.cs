@@ -6,5 +6,6 @@ namespace DesktopUI.Helpers
     public interface IAPIHelper
     {
         Task<AuthenticatedUser> Authenticate(string username, string password);
+        Task GetUserInfo(string token);
     }
 }
